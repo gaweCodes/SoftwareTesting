@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using System;
+using NUnit.Framework;
 
 namespace FirstUnitTests.Text
 {
@@ -70,6 +71,11 @@ namespace FirstUnitTests.Text
         {
             var result = _functions.Divide(15, 2);
             Assert.AreEqual(result, 7.5m);
+        }
+        [Test]
+        public void DivideTestByZero()
+        {
+            Assert.Throws<DivideByZeroException>(() => { _functions.Divide(15, 0); });
         }
         [Test]
         public void MultiplyTest()
