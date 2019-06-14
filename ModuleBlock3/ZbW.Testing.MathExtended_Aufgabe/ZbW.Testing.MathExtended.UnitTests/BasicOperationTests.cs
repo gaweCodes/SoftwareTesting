@@ -6,7 +6,7 @@ namespace ZbW.Testing.MathExtended.Library.UnitTests
     public class BasicOperationTests
     {
         [Test]
-        public void Addition_Calculate_Correct()
+        public void Addition_Calculate_ReturnsSum()
         {
             // Arrange
             var additionOperation = new BasicOperation();
@@ -18,7 +18,7 @@ namespace ZbW.Testing.MathExtended.Library.UnitTests
             Assert.That(result, Is.EqualTo(11));
         }
         [Test]
-        public  void Subtraction_Calculate_Correct()
+        public  void Subtraction_Calculate_ReturnsDifference()
         {
             // Arrange
             var subtractOperation = new BasicOperation();
@@ -30,7 +30,7 @@ namespace ZbW.Testing.MathExtended.Library.UnitTests
             Assert.That(result, Is.EqualTo(-1));
         }
         [Test]
-        public void Division_Calculate_Correct()
+        public void Division_Calculate_ReturnsQuotient()
         {
             // Arrange
             var divisionOperation = new BasicOperation();
@@ -47,11 +47,14 @@ namespace ZbW.Testing.MathExtended.Library.UnitTests
             // Arrange
             var divisionOperation = new BasicOperation();
 
+            // act
+            void Calculation() => divisionOperation.Division(100, 0);
+
             // Act and Assert
-            Assert.Throws<ZeroDivisorNotAllowedException>(() => { divisionOperation.Division(12, 0); });
+            Assert.Throws<ZeroDivisorNotAllowedException>(Calculation, "The exception doesn't occur.");
         }
         [Test]
-        public void Multiplication_Calculate_Correct()
+        public void Multiplication_Calculate_ReturnsProduct()
         {
             // Arrange
             var multiplicationOperation = new BasicOperation();
